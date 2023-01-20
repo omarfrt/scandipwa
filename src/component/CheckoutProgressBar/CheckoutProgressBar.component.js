@@ -7,32 +7,47 @@ import './CheckoutProgressBar.style';
 
 
 export class CheckoutProgressBar extends PureComponent {
-    constructor(props) {
-        super(props);
-      }
-    static propTypes = {
-        // TODO: implement prop-types
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentStep: 1
     };
+  }
 
-    render() {
-        
-        return (
-            <div class="stepper-wrapper">
-            <div class="stepper-item completed">
-              <div class="step-counter">1</div>
-              <div class="step-name">First</div>
-            </div>
-            <div class="stepper-item active">
-              <div class="step-counter">2</div>
-              <div class="step-name">Second</div>
-            </div>
-            <div class="stepper-item active">
-              
-            </div>
-            
+  handleNextStep = () => {
+    this.setState({ currentStep: this.state.currentStep + 1 });
+  }
+
+  handlePreviousStep = () => {
+    this.setState({ currentStep: this.state.currentStep - 1 });
+  }
+
+  render() {
+    const { currentStep } = this.state;
+    return (
+      <div>
+        <div className="progress-bar">
+          <div className={`progress-bar-step ${currentStep === 1 ? 'active' : ''}`}>Step 1</div>
+          <div className={`progress-bar-step ${currentStep === 2 ? 'active' : ''}`}>Step 2</div>
           </div>
-        );
-    }
+        <div className="checkout-content">
+          {currentStep === 1 && (
+            <div>
+              {/* Step 1 content goes here */}
+              <button onClick={this.handleNextStep}>Next</button>
+            </div>
+          )}
+          {currentStep === 2 && (
+            <div>
+              {/* Step 2 content goes here */}
+              <button onClick={this.handlePreviousStep}>Previous</button>
+              <button>Submit</button>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default CheckoutProgressBar;
