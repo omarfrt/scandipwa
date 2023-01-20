@@ -4,26 +4,7 @@ import styled from "styled-components";
 
 import './CheckoutProgressBar.style';
 
-const containerStyles = styled.div`
-height: 20px;
-width: 100%;
-backgroundColor: "#e0e0de";
-borderRadius: 50;
-margin: 50;
-`;
-const fillerStyles = styled.div`
-height: 100%;
-    width: ${(props)=>props.completed}%;
-    backgroundColor:${(props)=> props.bgcolor} ;
-    borderRadius: inherit;
-    textAlign: right;
-`;
 
-const labelStyles = styled.span`
-padding: 5;
-color: white;
-fontWeight:bold;
-`;
 
 export class CheckoutProgressBar extends PureComponent {
     constructor(props) {
@@ -34,15 +15,22 @@ export class CheckoutProgressBar extends PureComponent {
     };
 
     render() {
-        const { bgcolor, completed } = this.props;
+        
         return (
-           <containerStyles>
-            <fillerStyles completed={completed} bgcolor={bgcolor}>
-                <labelStyles>
-                {`${completed}%`}
-                </labelStyles>
-            </fillerStyles>
-           </containerStyles>
+            <div class="stepper-wrapper">
+            <div class="stepper-item completed">
+              <div class="step-counter">1</div>
+              <div class="step-name">First</div>
+            </div>
+            <div class="stepper-item active">
+              <div class="step-counter">2</div>
+              <div class="step-name">Second</div>
+            </div>
+            <div class="stepper-item active">
+              
+            </div>
+            
+          </div>
         );
     }
 }
