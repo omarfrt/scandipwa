@@ -7,11 +7,17 @@ import CheckoutProgressBar from 'Component/CheckoutProgressBar';
 
 /** @namespace Scandipwa/Route/Checkout/Component */
 export class CheckoutComponent extends SourceCheckout {
+    constructor(props){
+        super(props);
+        this.state={
+            percentage: 100
+        }
+    }
     render() {
         return (
             <>
             <main block="Checkout">
-                <CheckoutProgressBar/>
+                <CheckoutProgressBar percentage={this.state.percentage}/>
                 <ContentWrapper
                   wrapperMix={ { block: 'Checkout', elem: 'Wrapper' } }
                   label={ __('Checkout page') }
