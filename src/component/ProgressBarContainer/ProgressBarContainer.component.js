@@ -23,6 +23,9 @@ width: 100%;
 display: flex;
 flex-flow: row nowrap;
 gap: 2px;
+align-items:center;
+background-color: var(--breadcrumbs-background);
+padding: 16px 0px; 
 `;
 
 
@@ -34,9 +37,6 @@ export class ProgressBarContainer extends PureComponent {
     render() {
         return (
             <ProgressStepContainer>
-                <Track>
-                    <Thumb percentage={100} />
-                </Track>
                 {this.props.children}
             </ProgressStepContainer>
         );

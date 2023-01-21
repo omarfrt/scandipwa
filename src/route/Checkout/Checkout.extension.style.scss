@@ -1,0 +1,4 @@
+//no need for ::before as it messes up the design for the progressbar
+.Checkout::before{
+    display:none;
+}

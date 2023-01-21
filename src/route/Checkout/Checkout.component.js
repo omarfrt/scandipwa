@@ -2,7 +2,7 @@ import {
     Checkout as SourceCheckout,
 } from 'SourceRoute/Checkout/Checkout.component';
 import ContentWrapper from 'Component/ContentWrapper';
-import './Checkout.extension.style'
+import './Checkout.extension.style.scss'
 import CheckoutProgressBar from 'Component/CheckoutProgressBar';
 
 /** @namespace Scandipwa/Route/Checkout/Component */

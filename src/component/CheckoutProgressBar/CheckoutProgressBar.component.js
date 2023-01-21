@@ -4,20 +4,38 @@ import { PureComponent } from 'react';
 import './CheckoutProgressBar.style';
 import ProgressBar from 'Component/ProgressBar';
 import ProgressBarContainer from 'Component/ProgressBarContainer';
-
+import ProgressNumber from 'Component/ProgressNumber';
+import { SHIPPING_STEP, BILLING_STEP, DETAILS_STEP } from '@scandipwa/scandipwa/src/route/Checkout/Checkout.config';
 
 
   
 export class CheckoutProgressBar extends PureComponent {
  
-
+ 
+  getStepsProgress  = ()=>{
+    const {checkoutStep}= this.props
+    if(checkoutStep === DETAILS_STEP) {
+    return {shippingProgress: 100, billingProgress: 100, successProgess: 100}
+    }
+    if(checkoutStep=== BILLING_STEP){
+    return {shippingProgress: 100, billingProgress: 100, successProgess: 0}
+    }
+    
+    return {shippingProgress: 100, billingProgress: 0, successProgess: 0}
+    }
 
   render() {
+  
+    const {shippingProgress,billingProgress,successProgess} = this.getStepsProgress()
+    
     return (
       <>
       <ProgressBarContainer>
-        <ProgressBar percentage={100} progressNumber={1}/>
-        <ProgressBar percentage={20} progressNumber={2}/>
+        <ProgressBar percentage={shippingProgress} />
+        <ProgressNumber percentage={shippingProgress} progressNumber={1}/>
+        <ProgressBar percentage={billingProgress} />
+        <ProgressNumber percentage={billingProgress} progressNumber={2}/>
+        <ProgressBar percentage={successProgess} />
       </ProgressBarContainer>
       </>
        
