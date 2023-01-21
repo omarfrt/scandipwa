@@ -32,9 +32,9 @@ export class CheckoutProgressBar extends PureComponent {
       <>
       <ProgressBarContainer>
         <ProgressBar percentage={shippingProgress} />
-        <ProgressNumber percentage={shippingProgress} progressNumber={1}/>
+        <ProgressNumber percentage={shippingProgress} progressNumber={1} progressName={"Checkout"}/>
         <ProgressBar percentage={billingProgress} />
-        <ProgressNumber percentage={billingProgress} progressNumber={2}/>
+        <ProgressNumber percentage={billingProgress} progressNumber={2} progressName={"Review & Payments"}/>
         <ProgressBar percentage={successProgess} />
       </ProgressBarContainer>
       </>
